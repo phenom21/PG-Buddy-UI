@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
-
-function App() {
+import {Routes,Route,Navigate} from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
+import PgList from "./components/pgs/PgList/PgList"
+import AddPg from "./components/pgs/AddPg/AddPg";
+import ViewPg from "./components/pgs/ViewPg/ViewPg";
+let App=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <NavBar/>
+    <Routes>
+      <Route path={"/"} element={<Navigate to={"/pg/list"}/>}/>
+      <Route path={"/pg/list"} element={<PgList/>}/>
+      <Route path={"/pg/add"} element={<AddPg/>}/>
+      <Route path={"/pg/view/:pgid"} element={<ViewPg/>}/>
+    </Routes>
+    </>
   );
 }
 
